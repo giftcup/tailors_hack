@@ -1,0 +1,23 @@
+@extends('layouts.main')
+
+@section('main')
+    <main>
+        <section>
+            @yield('image')
+        </section>
+        <header>
+            @yield('header')
+        </header>
+        <section>
+            <div>Google</div>
+            <div>Facebook</div>
+            <div>Twitter</div>
+        </section>
+        <section>
+            @yield('form')
+        </section>
+        <section>
+            @yield('text')
+        </section>
+    </main>
+@endsection
