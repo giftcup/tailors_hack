@@ -7,8 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'dark-green': '#000F08',
+        'orange-red': '#F34213'
+      },
       backgroundImage: {
-        'machine': "asset(/images/machine.jpg)"
+        'machine': "url(/public/images/machine.jpg)"
       }
     },
   },
