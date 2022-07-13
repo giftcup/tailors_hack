@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/signup', function () {
-    return view('authenticate.signup');
+Route::controller(RegistrationController::class)->name('reg.')->group(function() {
+    Route::get('/register', 'create')->name('create');
+    Route::post('register', 'store')->name('store');
+});
+
+Route::controller(SessionsController::class)->name('sess.')->group(function() {
+    Route::get('/login', 'create')->name('create');
+    Route::post('login', 'store')->name('store');
+    Route::get('/logout', 'destroy')->name('destroy');
 });

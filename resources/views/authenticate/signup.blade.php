@@ -1,7 +1,9 @@
 @extends('authenticate.auth_layout')
 
 @section('image')
-    {{-- <img src={{ asset('images/machine.jpg') }} alt="" class="h-full w-fit"> --}}
+    <section class="basis-2/5 h-full bg-machine bg-cover bg-[center_left_-10rem] bg-no-repeat rounded-l-lg">
+        
+    </section>
 @endsection
 
 @section('header')
@@ -9,7 +11,8 @@
 @endsection
 
 @section('form')
-    <form action="" class="flex flex-col">
+    <form action="{{ route('reg.store') }}" class="flex flex-col" method="POST">
+        @csrf
         <div class="flex flex-col pt-7">
             <label class="font-bold text-sm" for="name">Workshop Name</label>
             <input type="text" name="name"
@@ -27,7 +30,7 @@
         </div>
         <div class="flex flex-col pt-7">
             <label class="font-bold text-sm" for="cpassword">Confirm password</label>
-            <input type="text" name="cpassword"
+            <input type="password" name="cpassword"
                 class="bg-dark-green border-b border-dark-green border-b-orange-red hover:outline-none focus:outline-none py-2">
         </div>
         <div>
