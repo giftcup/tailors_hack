@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function() {
+    return view('hello');
+})->name('hello');
 
 Route::controller(RegistrationController::class)->name('reg.')->group(function() {
     Route::get('/register', 'create')->name('create');

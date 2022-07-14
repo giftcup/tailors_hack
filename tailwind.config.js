@@ -12,7 +12,8 @@ module.exports = {
         'orange-red': '#F34213'
       },
       backgroundImage: {
-        'machine': "url(/public/images/machine.jpg)"
+        'machine': "url(/public/images/machine.jpg)",
+        'threads' : "url(/public/images/threads.jpg)"
       }
     },
   },

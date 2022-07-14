@@ -27,6 +27,6 @@ class RegistrationController extends Controller
         ]);
 
         auth()->login($user);
-        return redirect()->route('reg.create');
+        return redirect()->route('hello');
     }
 }
