@@ -29,3 +29,9 @@ Route::controller(SessionsController::class)->name('sess.')->group(function() {
     Route::post('login', 'store')->name('store');
     Route::get('/logout', 'destroy')->name('destroy');
 });
+
+Route::get('/join-workshop', [WorkshopController::class, 'join']);
+
+Route::get('/join-workshop', function() {
+    return view('workshops.join_workshop');
+})->middleware('auth');

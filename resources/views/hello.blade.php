@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('main')
-    @if ( auth()->check() )
+    @auth
         <p>{{ auth()->user()->name }}</p>
-    @endif
+    @endauth
 @endsection

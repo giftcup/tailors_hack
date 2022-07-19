@@ -7,28 +7,33 @@
 @endsection
 
 @section('header')
-    <h1>Login</h1>
+    <h1>Create Workshop</h1>
 @endsection
 
 @section('form')
     <form action="" class="flex flex-col justify-center" method="POST">
         @csrf
         <div class="flex flex-col pt-7">
-            <label class="font-bold text-sm" for="tel">Phone number</label>
-            <input type="text" name="tel"
+            <label class="font-bold text-sm" for="name">Name</label>
+            <input type="text" name="name"
                 class="bg-dark-green border-b border-dark-green border-b-orange-red hover:outline-none focus:outline-none py-2 text-lg">
         </div>
         <div class="flex flex-col pt-7">
-            <label class="font-bold text-sm" for="password">Password</label>
-            <input type="password" name="password"
+            <label class="font-bold text-sm" for="street">Street</label>
+            <input type="text" name="street"
+                class="bg-dark-green border-b border-dark-green border-b-orange-red hover:outline-none focus:outline-none py-2 text-lg">
+        </div>
+        <div class="flex flex-col pt-7">
+            <label class="font-bold text-sm" for="town">Town</label>
+            <input type="text" name="town"
                 class="bg-dark-green border-b border-dark-green border-b-orange-red hover:outline-none focus:outline-none py-2 text-lg">
         </div>
         <div>
-            <button type="submit" class="my-7 p-2 bg-orange-red w-full rounded font-bold text-2xl">Login</button>
+            <button type="submit" class="my-7 p-2 bg-orange-red w-full rounded font-bold text-2xl">Create</button>
         </div>
     </form>
 @endsection
 
 @section('text')
-    <p>Don't have an account? <a href="{{ route('reg.create') }}" class="font-bold underline hover:text-orange-red text-lg">Signup</a></p>
+    <p><a href=" " class="underline hover:text-orange-red text-lg">Join a workshop instead? </a></p>
 @endsection
