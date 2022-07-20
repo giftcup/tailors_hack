@@ -27,6 +27,6 @@ class RegistrationController extends Controller
         ]);
 
         auth()->login($user);
-        return redirect()->route('hello');
+        return redirect()->route('workshop.create');
     }
 }

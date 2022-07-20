@@ -30,8 +30,8 @@ Route::controller(SessionsController::class)->name('sess.')->group(function() {
     Route::get('/logout', 'destroy')->name('destroy');
 });
 
-Route::get('/join-workshop', [WorkshopController::class, 'join']);
-
-Route::get('/join-workshop', function() {
-    return view('workshops.join_workshop');
-})->middleware('auth');
+Route::resource('workshop', WorkshopController::class)->names([
+            'index' => 'workshop',
+            'create' => 'workshop.create',
+            'store' => 'workshop.store'
+        ])->middleware('auth');

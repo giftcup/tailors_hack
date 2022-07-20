@@ -11,7 +11,6 @@
 @endsection
 
 @section('form')
-    <p>Login First</p>
     <form action="" class="flex flex-col justify-center" method="POST">
         @csrf
         <div class="flex flex-col pt-7">
