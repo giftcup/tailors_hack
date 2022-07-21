@@ -27,6 +27,6 @@ class RegistrationController extends Controller
         ]);
 
         auth()->login($user);
-        return redirect()->route('workshop.create');
+        return redirect()->route('tailor.join');
     }
 }

@@ -15,23 +15,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
+Route::get('/', function () {
     return view('hello');
 })->name('hello');
 
-Route::controller(RegistrationController::class)->name('reg.')->group(function() {
+Route::controller(RegistrationController::class)->name('reg.')->group(function () {
     Route::get('/register', 'create')->name('create');
     Route::post('register', 'store')->name('store');
 });
 
-Route::controller(SessionsController::class)->name('sess.')->group(function() {
+Route::controller(SessionsController::class)->name('sess.')->group(function () {
     Route::get('/login', 'create')->name('create');
     Route::post('login', 'store')->name('store');
     Route::get('/logout', 'destroy')->name('destroy');
 });
 
-Route::resource('workshop', WorkshopController::class)->names([
-            'index' => 'workshop',
-            'create' => 'workshop.create',
-            'store' => 'workshop.store'
-        ])->middleware('auth');
+Route::resource('workshop', WorkshopController::class)
+    ->except(['index'])
+    ->names([
+        'create' => 'workshop.create',
+        'store' => 'workshop.store'
+    ])->middleware('auth');
+
+
+Route::controller(UserController::class)->name('tailor.')->group(function() {
+    Route::get('/workshop', 'joinWorkshop')->name('join');
+    Route::post('workshop', 'storeWorkshop')->name('workshop');
+});

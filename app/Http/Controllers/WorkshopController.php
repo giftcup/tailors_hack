@@ -9,19 +9,9 @@ use App\Models\User;
 class WorkshopController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Show the form for creating a new workshop.
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('workshops.join_workshop');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return view
      */
     public function create()
     {
@@ -29,8 +19,9 @@ class WorkshopController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
+     * Store a newly created workshop in database and
+     * update the workshop's id of the user who created it.
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -43,8 +34,7 @@ class WorkshopController extends Controller
             'town' => $request['town'],
             'street' => $request['street']
         ]);
-
-        $user = User::find(auth()->id());
+        $user = User::findOrFail(auth()->id());
         $user->update(['workshop_id' => $workshop->id]);
 
 

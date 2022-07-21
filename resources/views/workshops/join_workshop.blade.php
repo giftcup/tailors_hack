@@ -11,11 +11,11 @@
 @endsection
 
 @section('form')
-    <form action="" class="flex flex-col justify-center" method="POST">
+    <form action="{{ route('tailor.workshop') }}" class="flex flex-col justify-center" method="POST">
         @csrf
         <div class="flex flex-col pt-7">
-            <label class="font-bold text-sm" for="workshop_code">Workshop Code</label>
-            <input type="text" name="workshop_code"
+            <label class="font-bold text-sm" for="code">Workshop Code</label>
+            <input type="text" name="code"
                 class="bg-dark-green border-b border-dark-green border-b-orange-red hover:outline-none focus:outline-none py-2 text-lg">
         </div>
         <div>
@@ -25,5 +25,5 @@
 @endsection
 
 @section('text')
-    <p>Owner of a workshop?<a href=" " class="font-bold hover:text-orange-red text-2xl"> Register it</a></p>
+    <p>Owner of a workshop?<a href="{{ route('workshop.create') }}" class="font-bold hover:text-orange-red text-2xl"> Register it</a></p>
 @endsection

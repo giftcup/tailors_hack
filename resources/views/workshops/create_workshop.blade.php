@@ -35,5 +35,5 @@
 @endsection
 
 @section('text')
-    <p><a href=" " class="underline hover:text-orange-red text-lg">Join a workshop instead? </a></p>
+    <p><a href="{{ route('tailor.join') }}" class="underline hover:text-orange-red text-lg">Join a workshop instead? </a></p>
 @endsection
