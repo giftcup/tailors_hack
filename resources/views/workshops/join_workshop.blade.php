@@ -16,7 +16,10 @@
         <div class="flex flex-col pt-7">
             <label class="font-bold text-sm" for="code">Workshop Code</label>
             <input type="text" name="code"
-                class="bg-dark-green border-b border-dark-green border-b-orange-red hover:outline-none focus:outline-none py-2 text-lg">
+                class="bg-dark-green border-b border-dark-green border-b-orange-red hover:outline-none focus:outline-none py-2 text-lg @error('code') is-invalid @enderror">
+                @error('code')
+                <div class="validationError">{{ $message }}</div>
+            @enderror
         </div>
         <div>
             <button type="submit" class="my-7 p-2 bg-orange-red w-full rounded font-bold text-2xl">Join</button>

@@ -7,6 +7,7 @@ use App\Models\User;
 
 class RegistrationController extends Controller
 {
+
     public function create()
     {
         return view('authenticate.signup');
@@ -16,13 +17,13 @@ class RegistrationController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'tel' => 'required|min:9|max:9',
-            'password' => 'required'
+            'phone_number' => 'required|min:9|max:9',
+            'password' => 'required|confirmed'
         ]);
 
         $user = User::create([
             'name' => $request['name'],
-            'tel' => $request['tel'],
+            'tel' => $request['phone_number'],
             'password' => $request['password']
         ]);
 

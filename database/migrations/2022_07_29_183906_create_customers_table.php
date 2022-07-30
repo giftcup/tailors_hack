@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('workshops', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('workshop_id')
+                ->constrained('workshops')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->string('name');
-            $table->string('code')->unique();
-            $table->string('town');
-            $table->string('street');
-            $table->foreignId('created_by')
-                  ->constrained('users')
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
+            $table->string('tel')->unique();
+            $table->json('measurements');
+            $table->string('picture');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workshops');
+        Schema::dropIfExists('customers');
     }
 };

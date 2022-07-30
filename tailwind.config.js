@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   content: [
     "./resources/**/*.blade.php",
@@ -17,5 +20,14 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addComponents }) {
+      addComponents ({
+        '.validationError' : {
+          color: 'rgb(220 38 38)',
+          paddingTop: '0.75rem'
+        }
+      })
+    })
+  ],
 }

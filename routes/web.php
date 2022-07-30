@@ -19,26 +19,33 @@ Route::get('/', function () {
     return view('hello');
 })->name('hello');
 
-Route::controller(RegistrationController::class)->name('reg.')->group(function () {
-    Route::get('/register', 'create')->name('create');
-    Route::post('register', 'store')->name('store');
-});
+Route::controller(RegistrationController::class)
+    ->name('reg.')
+    ->middleware('guest')
+    ->group(function () {
+        Route::get('/register', 'create')->name('create');
+        Route::post('register', 'store')->name('store');
+    });
 
-Route::controller(SessionsController::class)->name('sess.')->group(function () {
-    Route::get('/login', 'create')->name('create');
-    Route::post('login', 'store')->name('store');
-    Route::get('/logout', 'destroy')->name('destroy');
-});
+Route::controller(SessionsController::class)
+    ->name('sess.')
+    ->middleware('guest')
+    ->group(function () {
+        Route::get('/login', 'create')->name('create');
+        Route::post('login', 'store')->name('store');
+        Route::get('/logout', 'destroy')->name('destroy');
+    });
 
 Route::resource('workshop', WorkshopController::class)
     ->except(['index'])
     ->names([
         'create' => 'workshop.create',
         'store' => 'workshop.store'
-    ])->middleware('auth');
+    ])
+    ->middleware('auth');
 
 
-Route::controller(UserController::class)->name('tailor.')->group(function() {
+Route::controller(UserController::class)->name('tailor.')->group(function () {
     Route::get('/workshop', 'joinWorkshop')->name('join');
-    Route::post('workshop', 'storeWorkshop')->name('workshop');
+    Route::post('workshop/join', 'storeWorkshop')->name('workshop');
 });
