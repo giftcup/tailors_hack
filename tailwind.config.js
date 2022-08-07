@@ -16,7 +16,8 @@ module.exports = {
       },
       backgroundImage: {
         'machine': "url(/public/images/machine.jpg)",
-        'threads' : "url(/public/images/threads.jpg)"
+        'threads' : "url(/public/images/threads.jpg)",
+        'thread-theme': "url(/public/images/thread-theme.jpg)"
       }
     },
   },

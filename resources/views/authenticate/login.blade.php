@@ -1,7 +1,7 @@
 @extends('authenticate.auth_layout')
 
 @section('image')
-    <img class="h-48 w-full object-cover lg:h-full" src="{{ asset('images/threads.jpg') }}" alt="">
+    <img class="h-32 w-full object-cover md:h-48 lg:h-full lg:rounded-l-xl" src="{{ asset('images/threads.jpg') }}" alt="">
 @endsection
 
 @section('header')
