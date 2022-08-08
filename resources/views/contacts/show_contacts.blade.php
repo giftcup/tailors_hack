@@ -1,0 +1,25 @@
+@extends('layouts.main')
+
+@section('main')
+<main>
+    <section>
+        <header>TailorHack</header>
+        <span>menu</span>
+    </section>
+    <section>
+        <p>Customers</p>
+        <span>Add</span>
+    </section>
+    <section>
+        <section>
+            <section>
+                @yield('image')
+            </section>
+            <section>
+                @yield('name')
+                @yield('number')
+            </section>
+        </section>
+    </section>
+</main>
+@endsection
