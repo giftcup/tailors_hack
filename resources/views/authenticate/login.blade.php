@@ -9,7 +9,7 @@
 @endsection
 
 @section('form')
-    <form action="" class="flex flex-col justify-center" method="POST">
+    <form action="{{ route('sess.store') }}" class="flex flex-col justify-center" method="POST">
         @csrf
         <div class="flex flex-col pt-7">
             <label class="font-bold text-sm" for="phone_number">Phone number</label>

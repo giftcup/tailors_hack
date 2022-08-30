@@ -49,3 +49,8 @@ Route::controller(UserController::class)->name('tailor.')->group(function () {
     Route::get('/workshop', 'joinWorkshop')->name('join');
     Route::post('workshop/join', 'storeWorkshop')->name('workshop');
 });
+
+
+Route::get('/workshop_name/contacts', function() {
+    return view('contacts.show_contacts');
+});
