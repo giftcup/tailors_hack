@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// $version = 'v1';
+// $locale = app()->getLocale();
+
+
+// Route::group(['prefix' => $version], function () use ($locale) {
+//     Route::group(['prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}'], 'middleware' => ['api', 'setLocale']], function () {
+
+//         // Authentication
+//         Route::group(['prefix' => 'auth'], function ($router) {
+//             Route::post('register', [AuthController::class, 'register']);
+//             Route::post('login', [AuthController::class, 'login']);
+//             Route::post('logout', [AuthController::class, 'logout']);
+//             Route::post('refresh', [AuthController::class, 'refresh']);
+//             Route::post('me', [AuthController::class, 'me']);
+//         });
+//     });
+// });
+
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::post('me', [AuthController::class, 'me']);
+
 });
