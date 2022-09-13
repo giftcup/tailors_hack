@@ -22,7 +22,7 @@
             <a href="#" class="">
                 <div class="flex gap-4 items-center py-3 border-b border-b-orange-red border-dotted">
                     <div>
-                        <img class="rounded-full" src="{{ asset('images/heart.jpg') }}" alt="" width=60px" height="50px">
+                        <img class="rounded-full" src="{{ asset('images/heart.jpg') }}" alt="" width="60px" height="50px">
                     </div>
                     <div class="flex flex-col">
                         <p class="text-lg font-bold">Tambe Salome</p>

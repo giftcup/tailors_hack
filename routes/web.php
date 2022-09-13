@@ -54,3 +54,7 @@ Route::controller(UserController::class)->name('tailor.')->group(function () {
 Route::get('/workshop_name/contacts', function() {
     return view('contacts.show_contacts');
 });
+
+Route::get('/workshop_name/contacts/add', function() {
+    return view('contacts.add_contact');
+});
