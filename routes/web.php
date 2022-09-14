@@ -55,6 +55,6 @@ Route::get('/workshop_name/contacts', function() {
     return view('contacts.show_contacts');
 });
 
-Route::get('/workshop_name/contacts/add', function() {
-    return view('contacts.add_contact');
+Route::get('/workshop_name/contacts/info', function() {
+    return view('contacts.info_contact');
 });
