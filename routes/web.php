@@ -58,3 +58,11 @@ Route::get('/workshop_name/contacts', function() {
 Route::get('/workshop_name/contacts/info', function() {
     return view('contacts.info_contact');
 });
+
+Route::get('/workshop_name/contacts/add', function() {
+    return view('contacts.add_contact');
+});
+
+Route::get('/workshop_name/contact/order/add', function() {
+    return view('orders.add_order');
+});

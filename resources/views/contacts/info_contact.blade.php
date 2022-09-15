@@ -1,22 +1,6 @@
-@extends('layouts.main')
+@extends('layouts.pages')
 
-@section('main')
-    <main class="bg-dark-green text-white min-h-screen h-full p-5">
-        <nav class="flex justify-between py-3">
-            <h1 class="text-2xl font-bold">TailorHack</h1>
-            <p class="text-orange-red">Menu</p>
-        </nav>
-        <section>
-            
-        </section>
-        <section class="flex justify-between p-2 border rounded-lg">
-            <form action="" method="GET">
-                <input type="text" placeholder="Search" name="search" class="bg-dark-green text-xl hover:outline-none focus:outline-none">
-            </form>
-            <button>
-                <i class="fa-solid fa-magnifying-glass text-xl text-white"></i>
-            </button>
-        </section>
+@section('content')
         <section>
             <div class="flex gap-6 items-center py-5">
                 <div>
