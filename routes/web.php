@@ -19,13 +19,13 @@ Route::get('/', function () {
     return view('hello');
 })->name('hello');
 
-// Route::controller(RegistrationController::class)
-//     ->name('reg.')
-//     ->middleware('guest')
-//     ->group(function () {
-//         Route::get('/register', 'create')->name('create');
-//         Route::post('register', 'store')->name('store');
-//     });
+Route::controller(RegistrationController::class)
+    ->name('reg.')
+    ->middleware('guest')
+    ->group(function () {
+        Route::get('/register', 'create')->name('create');
+        Route::post('register', 'store')->name('store');
+    });
 
 Route::controller(SessionsController::class)
     ->name('sess.')
