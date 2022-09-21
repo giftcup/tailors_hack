@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('hello');
+    return view('dummy_page');
 })->name('hello')->middleware('auth');;
 
 Route::controller(RegistrationController::class)
@@ -48,18 +48,30 @@ Route::controller(UserController::class)->name('tailor.')
     Route::post('workshop/join', 'storeWorkshop')->name('workshop');
 });
 
+/** 
+ *  /bessem-works-magic
+ *  /bessem-works-magic/customer-name/#OrDerNum
+ */
 
-Route::get('/workshop_name/contacts', function() {
-    return view('contacts.show_contacts');
-});
+Route::controller(CustomerController::class)->name('cust.')
+    ->group(function () {
+        Route::get('/{workshopName}/customers/create', 'create')->name('create');
+        Route::post('{workshopName}/customers/create', 'store')->name('store');
+        Route::get('{workshopName}/customers', 'customers')->name('all');
+        Route::get('{workshopName}/customers/{customerName}', 'customerInfo')->name('info');
+    });
 
-Route::get('/workshop_name/contacts/info', function() {
-    return view('contacts.info_contact');
-});
+// Route::get('/workshop_name/contacts', function() {
+//     return view('contacts.show_contacts');
+// });
 
-Route::get('/workshop_name/contacts/add', function() {
-    return view('contacts.add_contact');
-});
+// Route::get('/workshop_name/contacts/info', function() {
+//     return view('contacts.info_contact');
+// });
+
+// Route::get('/workshop_name/contacts/add', function() {
+//     return view('contacts.add_contact');
+// });
 
 Route::get('/workshop_name/contact/order/add', function() {
     return view('orders.add_order');

@@ -6,23 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Workshop extends Model
+class Customer extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'town',
-        'street',
-        'created_by',
-        'code'
+        'tel',
+        'workshop_id'
     ];
 
     public static function boot() {
         parent::boot();
-        static::created(function ($workshop) {
-            $workshop->slug = $workshop->createSlug($workshop->name);
-            $workshop->save();
+        static::created(function ($customer) {
+            $customer->slug = $customer->createSlug($customer->name);
+            $customer->save();
         });
     }
 
@@ -44,15 +42,7 @@ class Workshop extends Model
         return $slug;
     }
 
-    public function users() {
-       return $this->hasMany(User::class);
-    }
-    
-    public function customers() {
-        return $this->hasMany(Customer::class);
-    }
-
-    public function user() {
-        return $this->belongsTo(User::class, 'created_by');
+    public function workshop() {
+        return $this->belongsToMany(Workshop::class);
     }
 }
