@@ -7,6 +7,10 @@ use App\Models\User;
 
 class RegistrationController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('guest');
+    }
 
     public function create()
     {

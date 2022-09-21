@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class SessionsController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('guest');
+    }
+
     public function create()
     {
         return view('authenticate.login');

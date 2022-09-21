@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('code')->unique();
             $table->string('town');
             $table->string('street');
+            $table->string('workshop')->unique();
             $table->foreignId('created_by')
                   ->constrained('users')
                   ->onUpdate('cascade')

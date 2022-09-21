@@ -8,6 +8,11 @@ use App\Models\User;
 
 class WorkshopController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     /**
      * Show the form for creating a new workshop.
      *

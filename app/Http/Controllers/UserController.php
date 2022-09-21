@@ -8,6 +8,11 @@ use App\Models\Workshop;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     public function joinWorkshop()
     {
         return view('workshops.join_workshop');
@@ -18,7 +23,11 @@ class UserController extends Controller
 
         $workshop = Workshop::where('code', request('code'))->first();
 
-        User::findOrFail(auth()->id())->update(['workshop_id' => $workshop->id]);
+        try {
+            User::findOrFail(auth()->id())->update(['workshop_id' => $workshop->id]);
+        } catch (Exception $e) {
+            redirect()->route('sess.create');
+        }
 
         return redirect()->route('hello');
     }
