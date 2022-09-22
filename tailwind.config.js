@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       colors: {
         'dark-green': '#000F08',
+        'order-green': '#1C2822',
         'orange-red': '#F34213'
       },
       backgroundImage: {

@@ -73,6 +73,10 @@ Route::controller(CustomerController::class)->name('cust.')
 //     return view('contacts.add_contact');
 // });
 
+Route::get('/workshop_name/contact/order/add2', function() {
+    return view('orders.show_orders');
+});
+
 Route::get('/workshop_name/contact/order/add', function() {
     return view('orders.add_order');
 });

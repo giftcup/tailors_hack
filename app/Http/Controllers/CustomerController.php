@@ -7,6 +7,11 @@ use App\Models\Customer;
 
 class CustomerController extends Controller
 {
+    public function __contruct()
+    {
+        return $this->middleware('auth');
+    }
+    
     public function create() {
         return view('contacts.add_contact');
     }
