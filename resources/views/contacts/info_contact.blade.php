@@ -11,10 +11,24 @@
                 <p class="text-xl">{{ $customer->tel }}</p>
             </div>
         </div>
-        <x-contacts.contact-info-component icon="fa-user" title="profile" detail="Personal details" />
-        <x-contacts.contact-info-component icon="fa-tape" title="measurements" detail="All measurements" />
-        <x-contacts.contact-info-component icon="fa-cart-shopping" title="orders" detail="dresses ordered" />
-        <x-contacts.contact-info-component icon="fa-wallet" title="payments" detail="Total amount paid" />
+        <x-contacts.contact-info-component icon="fa-user" title="profile" detail="Personal details" :link="route('ord.create', [
+            'workshopName' => auth()->user()->workshop->slug,
+            'customerName' => $customer->slug,
+        ])" />
+        <x-contacts.contact-info-component icon="fa-tape" title="measurements" detail="All measurements"
+            :link="route('ord.create', [
+                'workshopName' => auth()->user()->workshop->slug,
+                'customerName' => $customer->slug,
+            ])" />
+        <x-contacts.contact-info-component :link="route('ord.create', [
+            'workshopName' => auth()->user()->workshop->slug,
+            'customerName' => $customer->slug,
+        ])" icon="fa-cart-shopping" title="orders"
+            detail="dresses ordered" />
+        <x-contacts.contact-info-component icon="fa-wallet" title="payments" detail="Total amount paid" :link="route('ord.create', [
+            'workshopName' => auth()->user()->workshop->slug,
+            'customerName' => $customer->slug,
+        ])" />
     </section>
     </main>
 @endsection

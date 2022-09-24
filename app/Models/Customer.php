@@ -45,4 +45,9 @@ class Customer extends Model
     public function workshop() {
         return $this->belongsToMany(Workshop::class);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

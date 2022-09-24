@@ -22,15 +22,21 @@ class ContactInfoComponent extends Component
     public $icon;
 
     /**
+     * @var string
+     */
+    public $link;
+
+    /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($icon, $title, $detail)
+    public function __construct($icon, $title, $detail, $link)
     {
         $this->icon = $icon;
         $this->title = strtoupper($title);
         $this->detail = ucwords($detail);
+        $this->link = $link;
     }
 
     /**

@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('order_num');
+            $table->string('order_num');
             $table->foreignId('customer_id')
                 ->constrained('customers')
                 ->onDelete('cascade')
@@ -26,6 +28,7 @@ return new class extends Migration
             $table->string('material_image')->nullable();
             $table->string('style_image')->nullable();
             $table->text('extra_notes')->nullable();
+            $table->boolean('completed')->default(0);
             $table->timestamps();
         });
     }

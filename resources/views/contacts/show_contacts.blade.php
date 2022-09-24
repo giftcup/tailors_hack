@@ -13,7 +13,7 @@
     <section class="py-5 md:grid md:grid-cols-2 lg:grid-cols-3">
 
         @foreach ($customers as $customer)
-            <a href="{{ route('cust.info', ['workshopName' => (auth()->user())->workshop->slug, 'customerName' => $customer->slug]) }}" class="">
+            <a href="{{ route('cust.info', ['workshopName' => auth()->user()->workshop->slug, 'customerName' => $customer->slug]) }}" class="">
                 <div class="flex gap-4 items-center py-3 border-b border-b-orange-red border-dotted">
                     <div>
                         <img class="rounded-full" src="{{ asset('images/heart.jpg') }}" alt="" width="60px"

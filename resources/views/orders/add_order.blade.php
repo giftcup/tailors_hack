@@ -6,14 +6,20 @@
             <header class="text-xl font-extrabold pt-5 text-center">
                 <h1>New Order</h1>
             </header>
-            <form action="" enctype="multipart/form-data" class="flex flex-col justify-center">
+            <form
+                action="{{ route('ord.store', ['workshopName' => $workshop, 'customerName' => $customer])  }}"
+                enctype="multipart/form-data" class="flex flex-col justify-center" method="POST">
                 @csrf
                 <div class="flex flex-col py-4">
-                    <label class="font-bold text-sm" for="dress">Dress Type</label>
-                    <input type="text" name="dress"
+                    <label class="font-bold text-sm" for="type">Dress Style</label>
+                    <input type="text" name="type"
                         class="md:w-4/5 bg-dark-green border-b border-dark-green border-b-orange-red hover:outline-none focus:outline-none py-2 text-lg">
                 </div>
-
+                <div class="flex flex-col py-4">
+                    <label class="font-bold text-sm" for="price">Price</label>
+                    <input type="number" name="price"
+                        class="md:w-4/5 bg-dark-green border-b border-dark-green border-b-orange-red hover:outline-none focus:outline-none py-2 text-lg">
+                </div>
                 <div class="flex flex-col pt-4">
                     <label class="font-bold text-sm">Measurements</label>
                     <div id="measurements">
@@ -43,24 +49,24 @@
                 </div>
 
                 <div class="flex flex-col py-4">
-                    <label class="font-bold text-sm py-4" for="profile">Material Picture</label>
-                    <input type="file" name="profile" accept="image/png image/jpg image/jpeg"
+                    <label class="font-bold text-sm py-4" for="material">Material Picture</label>
+                    <input type="file" name="material" accept="image/png image/jpg image/jpeg"
                         class="file:mr-4 file:py-2 file:px-4
-            file:rounded-full file:border-0
-            file:text-sm file:font-semibold
-            file:bg-white file:text-orange-red
-            hover:file:bg-violet-100
-            ">
+                        file:rounded-full file:border-0
+                        file:text-sm file:font-semibold
+                        file:bg-white file:text-orange-red
+                        hover:file:bg-violet-100
+                        ">
                 </div>
                 <div class="flex flex-col py-4">
-                    <label class="font-bold text-sm py-4" for="profile">Design Picture</label>
-                    <input type="file" name="profile" accept="image/png image/jpg image/jpeg"
+                    <label class="font-bold text-sm py-4" for="design">Design Picture</label>
+                    <input type="file" name="design" accept="image/png image/jpg image/jpeg"
                         class="file:mr-4 file:py-2 file:px-4
-            file:rounded-full file:border-0
-            file:text-sm file:font-semibold
-            file:bg-white file:text-orange-red
-            hover:file:bg-violet-100
-            ">
+                        file:rounded-full file:border-0
+                        file:text-sm file:font-semibold
+                        file:bg-white file:text-orange-red
+                        hover:file:bg-violet-100
+                        ">
                 </div>
                 <div>
                     <button type="submit" class="my-7 p-2 bg-orange-red w-1/2 rounded font-bold text-xl">Add</button>
