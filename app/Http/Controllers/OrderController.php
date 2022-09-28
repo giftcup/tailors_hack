@@ -65,7 +65,7 @@ class OrderController extends Controller
 
     public function orderDetails($customer, $order)
     {
-        $orderInfo = Order::where('order_num', $order)->get();
+        $orderInfo = Order::where('order_num', $order)->first();
         // dd($orderInfo);
         return view('orders.info_order', compact('orderInfo'));
     }
