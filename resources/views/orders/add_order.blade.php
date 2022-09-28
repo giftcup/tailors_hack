@@ -7,7 +7,7 @@
                 <h1>New Order</h1>
             </header>
             <form
-                action="{{ route('ord.store', ['workshopName' => $workshop, 'customerName' => $customer])  }}"
+                action="{{ route('ord.store', ['customerName' => $customer])  }}"
                 enctype="multipart/form-data" class="flex flex-col justify-center" method="POST">
                 @csrf
                 <div class="flex flex-col py-4">

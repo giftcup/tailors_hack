@@ -13,11 +13,11 @@ class OrderController extends Controller
         return $this->middleware('auth');
     }
 
-    public function create($workshop, $customer) {
-        return view('orders.add_order', compact('workshop', 'customer'));
+    public function create($customer) {
+        return view('orders.add_order', compact('customer'));
     }
 
-    public function store(Request $request, $workshop, $customer) {
+    public function store(Request $request, $customer) {
         $request->validate([
             'date' => 'required',
             'measurement' => 'required',
@@ -47,6 +47,27 @@ class OrderController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+    public function orders($customer, Request $request)
+    {
+        $orders = Order::whereRelation('customer', 'slug', $customer)
+                    ->where('order_num', 'LIKE', '%'.$request['search'].'%')
+                    ->get();
+        // dd($orders);
+        // $measurements = json_decode($orders[0]->measurements);
+        // foreach(json_decode($orders[0]->measurements) as $key => $value) {
+        //     echo $key." : ".$value. "<br>";
+        // }
+
+        return view('orders.show_orders', compact('orders', 'customer'));
+    }
+
+    public function orderDetails($customer, $order)
+    {
+        $orderInfo = Order::where('order_num', $order)->get();
+        // dd($orderInfo);
+        return view('orders.info_order', compact('orderInfo'));
     }
     
 }

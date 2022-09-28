@@ -20,6 +20,14 @@ class Order extends Model
         'style_image',
     ];
 
+    protected $dates = [
+        'delivery_date'
+    ];
+
+    protected $casts = [
+        'completed' => 'boolean'
+    ];
+
     public static function boot() {
         parent::boot();
         static::created(function ($order) {
@@ -31,7 +39,7 @@ class Order extends Model
     public function createOrderNum()
     {
         do {
-            define('ORDER', '#ODR');
+            define('ORDER', 'ODR');
             $rand = rand(0, 9999);
             $rand = str_pad($rand, 4, '0', STR_PAD_LEFT);
             $num = ORDER . $rand;

@@ -36,7 +36,7 @@ class CustomerController extends Controller
         return view('contacts.show_contacts')->with('customers', $customers);
     }
 
-    public function customerInfo($workshopSlug, $customerSlug) {
+    public function customerInfo($customerSlug) {
         $customer = Customer::where('slug', $customerSlug)->first();
         return view('contacts.info_contact', compact('customer'));
     }

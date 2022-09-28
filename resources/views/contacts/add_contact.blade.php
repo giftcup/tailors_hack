@@ -4,7 +4,7 @@
     <header class="text-xl font-extrabold pt-5 text-center">
         <h1>New Contact</h1>
     </header>
-    <form action="{{ route('cust.store', ['workshopName' => auth()->user()->workshop->slug]) }}"
+    <form action="{{ route('cust.store') }}"
         enctype="multipart/form-data" class="flex flex-col justify-center" method="POST">
         @csrf
         <div class="flex flex-col pt-7">

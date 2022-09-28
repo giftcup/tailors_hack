@@ -55,24 +55,24 @@ Route::controller(UserController::class)->name('tailor.')
 
 Route::controller(CustomerController::class)->name('cust.')
     ->group(function () {
-        Route::get('/{workshopName}/customers/add', 'create')->name('create');
-        Route::post('{workshopName}/customers/add', 'store')->name('store');
-        Route::get('{workshopName}/customers', 'customers')->name('all');
-        Route::get('{workshopName}/customers/{customerName}', 'customerInfo')->name('info');
+        Route::get('/customers/add', 'create')->name('create');
+        Route::post('customers/add', 'store')->name('store');
+        Route::get('customers', 'customers')->name('all');
+        Route::get('customers/{customerName}', 'customerInfo')->name('info');
     });
 
 Route::controller(OrderController::class)->name('ord.')
     ->group(function() {
-        Route::get('/{workshopName}/{customerName}/orders/new', 'create')->name('create');
-        Route::post('{workshopName}/{customerName}/orders/new', 'store')->name('store');
-        Route::get('/{workshopName}/{customerName}/orders', 'orders')->name('cust');
-        Route::get('/{workshopName}/{customerName}/orders/{orderNum}', 'orderDetails')->name('details');
-        Route::get('/{workshopName}/orders', 'workshopOrders')->name('workshop');
+        Route::get('/{customerName}/orders/new', 'create')->name('create');
+        Route::post('{customerName}/orders/new', 'store')->name('store');
+        Route::get('/{customerName}/orders', 'orders')->name('cust');
+        Route::get('/{customerName}/orders/{orderNum}', 'orderDetails')->name('details');
+        Route::get('/orders', 'workshopOrders')->name('workshop');
     });
 
-Route::get('/workshop_name/contact/order/add2', function() {
-    return view('orders.show_orders');
-});
+// Route::get('/workshop_name/contact/order/add2', function() {
+//     return view('orders.info_order');
+// });
 
 Route::get('/workshop_name/contact/order/add', function() {
     return view('orders.add_order');
