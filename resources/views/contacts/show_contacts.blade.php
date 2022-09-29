@@ -1,14 +1,14 @@
 @extends('layouts.pages')
 
 @section('content')
-    <section class="flex justify-between p-2 border rounded-lg">
-        <form action="" method="GET">
-            <input type="text" placeholder="Search" name="search"
-                class="bg-dark-green text-xl hover:outline-none focus:outline-none">
+    <section>
+        <form class="flex justify-between p-2 border rounded-lg" action="{{ route('cust.all') }}" method="GET">
+            <input type="text" name="search" {{ $search != null ? 'value =' . $search : 'placeholder =' . 'Search' }}
+                class="bg-dark-green text-xl hover:outline-none focus:outline-none w-full">
+            <button type="submit">
+                <i class="fa-solid fa-magnifying-glass text-xl text-white"></i>
+            </button>
         </form>
-        <button>
-            <i class="fa-solid fa-magnifying-glass text-xl text-white"></i>
-        </button>
     </section>
     <section class="py-5 md:grid md:grid-cols-2 lg:grid-cols-3">
 

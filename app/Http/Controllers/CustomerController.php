@@ -31,9 +31,14 @@ class CustomerController extends Controller
         return redirect()->route('hello');
     }
 
-    public function customers() {
-        $customers = Customer::get()->sortBy('name');
-        return view('contacts.show_contacts')->with('customers', $customers);
+    public function customers(Request $request) {
+        $search = $request->has('search') ? $request['search'] : null;
+
+        $customers = Customer::where('name', 'LIKE', '%'.$search.'%')
+                        ->orWhere('tel', 'LIKE', '%'.$search.'%')
+                        ->get()
+                        ->sortBy('name');
+        return view('contacts.show_contacts', compact('search'))->with('customers', $customers);
     }
 
     public function customerInfo($customerSlug) {

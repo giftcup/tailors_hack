@@ -51,23 +51,23 @@ class OrderController extends Controller
 
     public function orders($customer, Request $request)
     {
-        $orders = Order::whereRelation('customer', 'slug', $customer)
-                    ->where('order_num', 'LIKE', '%'.$request['search'].'%')
-                    ->get();
-        // dd($orders);
-        // $measurements = json_decode($orders[0]->measurements);
-        // foreach(json_decode($orders[0]->measurements) as $key => $value) {
-        //     echo $key." : ".$value. "<br>";
-        // }
+        $search = $request->has('search') ? $request['search'] : null;
 
-        return view('orders.show_orders', compact('orders', 'customer'));
+        $orders = Order::whereRelation('customer', 'slug', $customer)
+                    ->where('order_num', 'LIKE', '%'.$search.'%')
+                    ->get();
+
+        return view('orders.show_orders', compact('orders', 'customer', 'search'));
     }
 
     public function orderDetails($customer, $order)
     {
         $orderInfo = Order::where('order_num', $order)->first();
-        // dd($orderInfo);
+
         return view('orders.info_order', compact('orderInfo'));
     }
     
+    public function workshopOrders() {
+        
+    }
 }

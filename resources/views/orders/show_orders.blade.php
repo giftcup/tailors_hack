@@ -3,7 +3,7 @@
 @section('content')
     <section class="">
         <form class="flex justify-between p-2 border rounded-lg" action="{{ route('ord.cust', ['customerName' => $customer]) }}" method="GET">
-            <input type="text" placeholder="Search" name="search"
+            <input type="text" name="search" {{ $search != null ? 'value =' . $search : 'placeholder =' . 'Search' }}
                 class="bg-dark-green text-xl hover:outline-none focus:outline-none w-full">
             <button type="submit">
                 <i class="fa-solid fa-magnifying-glass text-xl text-white"></i>

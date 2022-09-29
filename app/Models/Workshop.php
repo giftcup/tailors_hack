@@ -55,4 +55,9 @@ class Workshop extends Model
     public function user() {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+    public function orders()
+    {
+        return $this->hasManyThrough(Order::class, Customer::class);
+    }
 }
