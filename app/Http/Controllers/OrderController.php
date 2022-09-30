@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Workshop;
 use App\Models\Customer;
 
 class OrderController extends Controller
@@ -42,8 +43,8 @@ class OrderController extends Controller
             'dress_type' => $request['type'],
             'price' => $request['price'],
             'extra_notes' => isset($request['notes']) ? $request['notes'] : NULL,
-            // 'material' => isset($request['material']) ? $request['material'] : NULL,
-            // 'design' => isset($request['design']) ? $request['design'] : NULL
+            'material' => isset($request['material']) ? $request['material'] : NULL,
+            'design' => isset($request['design']) ? $request['design'] : NULL
         ]);
 
         return redirect()->back();
@@ -66,8 +67,25 @@ class OrderController extends Controller
 
         return view('orders.info_order', compact('orderInfo'));
     }
+
+    public function changeCompletionState($order_num)
+    {
+        $orderInfo = Order::where('order_num', $order_num)->update(['completed' => 1]);
+        dd($orderInfo);
+        // return redirect()->route('details', ['customerName' => ])
+    }
     
-    public function workshopOrders() {
-        
+    public function workshopOrders(Request $request) {
+        $search = $request->has('search') ? $request['search'] : null;
+
+        $orders = Order::select(['workshops.name', 'customers.id', 'orders.*'])
+                            ->join('customers', 'orders.customer_id', 'customers.id')
+                            ->join('workshops', 'customers.workshop_id', 'workshops.id')
+                            ->where('customers.name', 'LIKE', '%'.$search.'%')
+                            ->orWhere('orders.order_num', 'LIKE', '%'.$search.'%')
+                            ->get();
+        // dd($orders);
+
+        return view('orders.all_orders', compact('orders', 'search'));
     }
 }

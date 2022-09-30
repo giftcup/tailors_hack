@@ -5,7 +5,7 @@
         <section class="md:w-1/2 md:flex md:flex-col md:border md:border-white/30 md:shadow-lg md:shadow-white/50 md:p-9">
             <header class="flex py-5 justify-between items-center">
                 <h1 class="text-3xl font-extrabold">{{ $orderInfo->order_num }}</h1>
-                <p>Due: {{ $orderInfo->delivery_date->format('j M Y') }}</p>
+                <p class="text-red-900 font-bold bg-stone-50 p-3">Due: {{ $orderInfo->delivery_date->format('j M Y') }}</p>
             </header>
             <section class="text-xl tracking-wide leading-relaxed">
                 <div class="pb-2">
@@ -30,6 +30,18 @@
                 <div class="pb-2">
                     <span class="italic">Extra Notes: <br></span>
                     <span class="px-5">{{ $orderInfo->extra_notes }}</span>
+                </div>
+                <div>
+                    <form action="{{ route('ord.change', ['orderNum' => $orderInfo->order_num]) }}" method="POST">
+                        @csrf
+                        <button class="bg-orange-red p-2" name="completed" value="">
+                            @if ($orderInfo->completed)
+                                Mark as Uncompleted
+                            @else
+                                Mark as Completed
+                            @endif
+                        </button>
+                    </form>
                 </div>
             </section>
         </section>
