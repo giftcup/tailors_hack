@@ -28,6 +28,7 @@ Route::controller(RegistrationController::class)
     });
 
 Route::controller(SessionsController::class)
+    ->middleware('auth')
     ->name('sess.')
     ->group(function () {
         Route::get('/login', 'create')->name('create');
