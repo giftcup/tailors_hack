@@ -68,11 +68,14 @@ class OrderController extends Controller
         return view('orders.info_order', compact('orderInfo'));
     }
 
-    public function changeCompletionState($order_num)
+    public function changeCompletionState($orderNum)
     {
-        $orderInfo = Order::where('order_num', $order_num)->update(['completed' => 1]);
-        dd($orderInfo);
-        // return redirect()->route('details', ['customerName' => ])
+        $orderInfo = Order::where('order_num', $orderNum)->first();
+        $orderInfo->completed = !$orderInfo->completed;
+        $orderInfo->save();
+
+        // return redirect()->route('ord.details', ['customerName' => $orderInfo->customer->name, 'orderNum' => $orderNum]);
+        redirect()->back();
     }
     
     public function workshopOrders(Request $request) {
@@ -84,7 +87,6 @@ class OrderController extends Controller
                             ->where('customers.name', 'LIKE', '%'.$search.'%')
                             ->orWhere('orders.order_num', 'LIKE', '%'.$search.'%')
                             ->get();
-        // dd($orders);
 
         return view('orders.all_orders', compact('orders', 'search'));
     }

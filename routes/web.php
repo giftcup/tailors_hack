@@ -28,7 +28,6 @@ Route::controller(RegistrationController::class)
     });
 
 Route::controller(SessionsController::class)
-    ->middleware('auth')
     ->name('sess.')
     ->group(function () {
         Route::get('/login', 'create')->name('create');
@@ -80,8 +79,12 @@ Route::controller(OrderController::class)->name('ord.')
 //     return view('orders.info_order');
 // });
 
-Route::get('/workshop_name/contact/order/add', function() {
-    return view('orders.add_order');
+// Route::get('/workshop_name/contact/order/add', function() {
+//     return view('orders.add_order');
+// });
+
+Route::post('/workshop_name/contact/orders/add', function() {
+return redirect() -> route('orders');
 });
 
 // Route::get('/workshop_name/contacts', function() {
