@@ -72,6 +72,7 @@ Route::controller(OrderController::class)->name('ord.')
         Route::get('/{customerName}/orders', 'orders')->name('cust');
         Route::get('/{customerName}/orders/{orderNum}', 'orderDetails')->name('details');
         Route::post('orders/{orderNum}', 'changeCompletionState')->name('change');
+        Route::post('{customerName}/orders/{orderNum}', 'deleteOrder')->name('delete');
         Route::get('/orders', 'workshopOrders')->name('workshop');
     });
 

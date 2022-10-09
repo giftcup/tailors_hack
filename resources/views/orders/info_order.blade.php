@@ -31,15 +31,22 @@
                     <span class="italic">Extra Notes: <br></span>
                     <span class="px-5">{{ $orderInfo->extra_notes }}</span>
                 </div>
-                <div>
+                <div class="flex justify-between">
                     <form action="{{ route('ord.change', ['orderNum' => $orderInfo->order_num]) }}" method="POST">
                         @csrf
-                        <button class="bg-orange-red p-2" name="completed" value="">
+                        <button class="bg-orange-red px-2 rounded" name="completed" value="">
                             @if ($orderInfo->completed)
                                 Mark as Uncompleted
                             @else
                                 Mark as Completed
                             @endif
+                        </button>
+                    </form>
+
+                    <form action="{{ route('ord.delete', ['customerName' =>  $orderInfo->customer->name, 'orderNum' => $orderInfo->order_num]) }}" method="POST">
+                        @csrf
+                        <button class="border-4 px-3 rounded" name="delete" value="">
+                            Delete
                         </button>
                     </form>
                 </div>

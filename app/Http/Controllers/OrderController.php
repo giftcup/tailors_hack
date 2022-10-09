@@ -74,8 +74,13 @@ class OrderController extends Controller
         $orderInfo->completed = !$orderInfo->completed;
         $orderInfo->save();
 
-        // return redirect()->route('ord.details', ['customerName' => $orderInfo->customer->name, 'orderNum' => $orderNum]);
-        redirect()->back();
+        return redirect()->route('ord.cust',  ['customerName' => $orderInfo->customer->name]);
+    }
+
+    public function deleteOrder($customer, $orderNum) {
+        Order::where('order_num', $orderNum)->delete();
+
+        return redirect()->route('ord.cust',  ['customerName' => $customer]);
     }
     
     public function workshopOrders(Request $request) {
