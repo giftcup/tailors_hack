@@ -22,8 +22,20 @@ class Workshop extends Model
         parent::boot();
         static::created(function ($workshop) {
             $workshop->slug = $workshop->createSlug($workshop->name);
+            $workshop->code = $workshop->createCode();
             $workshop->save();
         });
+    }
+
+    public function createCode()
+    {
+        do {
+            define('WORKSHOP', 'WRK');
+            $rand =  str()->random(4);
+            $code = WORKSHOP . $rand;
+        } while(static::where('code', $code)->exists());
+
+        return $code;
     }
 
     private function createSlug($name)

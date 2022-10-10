@@ -84,8 +84,8 @@ Route::controller(OrderController::class)->name('ord.')
 //     return view('orders.add_order');
 // });
 
-Route::post('/workshop_name/contact/orders/add', function() {
-return redirect() -> route('orders');
+Route::get('/workshop_name', function() {
+    return view('workshops.info');
 });
 
 // Route::get('/workshop_name/contacts', function() {
