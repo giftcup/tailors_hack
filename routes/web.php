@@ -20,7 +20,6 @@ Route::get('/', function () {
 })->name('hello')->middleware('auth');;
 
 Route::controller(RegistrationController::class)
-    ->middleware('auth')
     ->name('reg.')
     ->group(function () {
         Route::get('/register', 'create')->name('create');

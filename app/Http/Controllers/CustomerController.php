@@ -33,16 +33,21 @@ class CustomerController extends Controller
 
     public function customers(Request $request) {
         $search = $request->has('search') ? $request['search'] : null;
-
-        $customers = Customer::where('name', 'LIKE', '%'.$search.'%')
-                        ->orWhere('tel', 'LIKE', '%'.$search.'%')
+        $workshop = auth()->user()->workshop;
+        $customers = Customer::whereBelongsTo($workshop)
+                        ->where(function ($query) use ($search) {
+                            $query->where('name', 'LIKE', '%'.$search.'%')
+                                ->orWhere('tel', 'LIKE', '%'.$search.'%');
+                        })
                         ->get()
                         ->sortBy('name');
+        // dd($customers);               
         return view('contacts.show_contacts', compact('search'))->with('customers', $customers);
     }
 
     public function customerInfo($customerSlug) {
         $customer = Customer::where('slug', $customerSlug)->first();
+
         return view('contacts.info_contact', compact('customer'));
     }
 }

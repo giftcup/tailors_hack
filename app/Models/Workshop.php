@@ -30,7 +30,7 @@ class Workshop extends Model
     public function createCode()
     {
         do {
-            define('WORKSHOP', 'WRK');
+            define('WORKSHOP', 'SHP');
             $rand =  str()->random(4);
             $code = WORKSHOP . $rand;
         } while(static::where('code', $code)->exists());

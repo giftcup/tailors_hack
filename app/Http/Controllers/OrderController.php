@@ -74,7 +74,7 @@ class OrderController extends Controller
         $orderInfo->completed = !$orderInfo->completed;
         $orderInfo->save();
 
-        return redirect()->route('ord.cust',  ['customerName' => $orderInfo->customer->name]);
+        return redirect()->route('ord.cust',  ['customerName' => $orderInfo->customer->slug]);
     }
 
     public function deleteOrder($customer, $orderNum) {
@@ -86,13 +86,22 @@ class OrderController extends Controller
     public function workshopOrders(Request $request) {
         $search = $request->has('search') ? $request['search'] : null;
 
-        $orders = Order::select(['workshops.name', 'customers.id', 'orders.*'])
-                            ->join('customers', 'orders.customer_id', 'customers.id')
-                            ->join('workshops', 'customers.workshop_id', 'workshops.id')
-                            ->where('customers.name', 'LIKE', '%'.$search.'%')
-                            ->orWhere('orders.order_num', 'LIKE', '%'.$search.'%')
-                            ->get();
+        // $orders = Order::select(['workshops.name', 'customers.id', 'orders.*'])
+        //                     ->rightJoin('customers', 'orders.customer_id', 'customers.id')
+        //                     ->rightJoin('workshops', 'customers.workshop_id', 'workshops.id')
+        //                     // ->where('customers.name', 'LIKE', '%'.$search.'%')
+        //                     // ->orWhere('orders.order_num', 'LIKE', '%'.$search.'%')
+        //                     ->get();
 
+        $orders = Order::whereHas('customer.workshop', function($workshop) use ($search) {
+            $workshop->where('id', auth()->user()->workshop->id)
+                    ->where(function ($query) use ($search) {
+                        $query->where('customers.name', 'LIKE', '%'.$search.'%')
+                            ->orWhere('orders.order_num', 'LIKE', '%'.$search.'%')
+                            ->orWhere('orders.dress_type', 'LIKE', '%'.$search.'%');
+            });
+        }) ->get();
+        
         return view('orders.all_orders', compact('orders', 'search'));
     }
 }

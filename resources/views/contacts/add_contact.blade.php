@@ -27,7 +27,7 @@
             hover:file:bg-violet-100
             ">
         </div>
-        <div>
+        <div class="text-center">
             <button type="submit" class="my-7 p-2 bg-orange-red w-1/2 rounded font-bold text-xl">Add</button>
         </div>
     </form>

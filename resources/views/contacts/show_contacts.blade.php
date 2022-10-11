@@ -27,7 +27,7 @@
             </a>
         @endforeach
 
-        @for ($i = 0; $i < 10; $i++)
+        {{-- @for ($i = 0; $i < 10; $i++)
             <a href="#" class="">
                 <div class="flex gap-4 items-center py-3 border-b border-b-orange-red border-dotted">
                     <div>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
             </a>
-        @endfor
+        @endfor --}}
     </section>
     </main>
 @endsection

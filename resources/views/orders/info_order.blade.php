@@ -43,7 +43,7 @@
                         </button>
                     </form>
 
-                    <form action="{{ route('ord.delete', ['customerName' =>  $orderInfo->customer->name, 'orderNum' => $orderInfo->order_num]) }}" method="POST">
+                    <form action="{{ route('ord.delete', ['customerName' =>  $orderInfo->customer->slug, 'orderNum' => $orderInfo->order_num]) }}" method="POST">
                         @csrf
                         <button class="border-4 px-3 rounded" name="delete" value="">
                             Delete

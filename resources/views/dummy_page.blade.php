@@ -19,6 +19,7 @@
         <div class="flex flex-col pt-7">
             <a class="font-bold text-2xl pb-4" href="{{ route('cust.create') }}">Create Customer</a>
             <a class="font-bold text-2xl pb-4" href="{{ route('cust.all') }}">Show Customers</a>
+            <a class="font-bold text-2xl pb-4" href="{{ route('ord.workshop') }}">All Orders</a>
         </div>
     </div>
 @endsection

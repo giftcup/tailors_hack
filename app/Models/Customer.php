@@ -43,7 +43,7 @@ class Customer extends Model
     }
 
     public function workshop() {
-        return $this->belongsToMany(Workshop::class);
+        return $this->belongsTo(Workshop::class);
     }
 
     public function orders()
