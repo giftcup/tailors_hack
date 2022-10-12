@@ -15,6 +15,7 @@ class OrderController extends Controller
     }
 
     public function create($customer) {
+        $customer =  Customer::where('slug', $customer)->first();
         return view('orders.add_order', compact('customer'));
     }
 
@@ -34,9 +35,7 @@ class OrderController extends Controller
         $measurement = $request['measurement'];
         $measurements = json_encode(array_combine($measurement, $value));
 
-        // dd($request['notes']);
-
-        Order::create( [
+        $order = Order::create( [
             'customer_id' => Customer::where('slug', $customer)->first()->id,
             'measurements' => $measurements,
             'delivery_date' => $request['date'],
@@ -47,7 +46,7 @@ class OrderController extends Controller
             'design' => isset($request['design']) ? $request['design'] : NULL
         ]);
 
-        return redirect()->back();
+        return redirect()->route('ord.cust', ['customerName' => $customer, 'orderNum' => $order->order_num]);
     }
 
     public function orders($customer, Request $request)
@@ -85,13 +84,6 @@ class OrderController extends Controller
     
     public function workshopOrders(Request $request) {
         $search = $request->has('search') ? $request['search'] : null;
-
-        // $orders = Order::select(['workshops.name', 'customers.id', 'orders.*'])
-        //                     ->rightJoin('customers', 'orders.customer_id', 'customers.id')
-        //                     ->rightJoin('workshops', 'customers.workshop_id', 'workshops.id')
-        //                     // ->where('customers.name', 'LIKE', '%'.$search.'%')
-        //                     // ->orWhere('orders.order_num', 'LIKE', '%'.$search.'%')
-        //                     ->get();
 
         $orders = Order::whereHas('customer.workshop', function($workshop) use ($search) {
             $workshop->where('id', auth()->user()->workshop->id)

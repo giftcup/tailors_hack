@@ -4,10 +4,10 @@
     <section class="md:flex md:flex-col md:items-center md:bg-dark-green/80">
         <section class="md:w-1/2 md:flex md:flex-col md:border md:border-white/30 md:shadow-lg md:shadow-white/50 md:px-9">
             <header class="text-xl font-extrabold pt-5 text-center">
-                <h1>New Order</h1>
+                <h1>New {{ $customer->name }} Order</h1>
             </header>
             <form
-                action="{{ route('ord.store', ['customerName' => $customer])  }}"
+                action="{{ route('ord.store', ['customerName' => $customer->slug])  }}"
                 enctype="multipart/form-data" class="flex flex-col justify-center" method="POST">
                 @csrf
                 <div class="flex flex-col py-4">

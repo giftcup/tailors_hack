@@ -10,8 +10,14 @@
             </button>
         </form>
     </section>
+    <header class="text-xl font-extrabold pt-5 text-center">
+        @if (!$customers->isEmpty())
+            <h1>Customers of {{ auth()->user()->workshop->name }}</h1>
+        @else
+            <h1>No Customers Found!!</h1>
+        @endif
+    </header>
     <section class="py-5 md:grid md:grid-cols-2 lg:grid-cols-3">
-
         @foreach ($customers as $customer)
             <a href="{{ route('cust.info', ['customerName' => $customer->slug]) }}" class="">
                 <div class="flex gap-4 items-center py-3 border-b border-b-orange-red border-dotted">

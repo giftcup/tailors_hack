@@ -22,13 +22,13 @@ class CustomerController extends Controller
             'tel' => 'required | unique:customers',
         ]);
 
-        Customer::create([
+        $customer = Customer::create([
             'name' => $request['name'],
             'tel' => $request['tel'],
             'workshop_id' => auth()->user()->workshop->id
         ]);
 
-        return redirect()->route('hello');
+        return redirect()->route('cust.info', ['customerName' => $customer->slug]);
     }
 
     public function customers(Request $request) {
@@ -41,7 +41,7 @@ class CustomerController extends Controller
                         })
                         ->get()
                         ->sortBy('name');
-        // dd($customers);               
+
         return view('contacts.show_contacts', compact('search'))->with('customers', $customers);
     }
 
