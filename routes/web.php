@@ -48,6 +48,7 @@ Route::controller(UserController::class)->name('tailor.')
     ->group(function () {
     Route::get('/workshop', 'joinWorkshop')->name('join');
     Route::post('workshop/join', 'storeWorkshop')->name('workshop');
+    Route::get('/profile', 'profile')->name('profile');
 });
 
 /** 
@@ -78,7 +79,3 @@ Route::controller(OrderController::class)->name('ord.')
 // Route::get('/workshop_name/contact/order/add2', function() {
 //     return view('orders.info_order');
 // });
-
-Route::get('/workshop_name', function() {
-    return view('workshops.info');
-});

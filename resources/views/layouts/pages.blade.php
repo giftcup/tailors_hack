@@ -9,6 +9,8 @@
                 <x-nav.links name="Customers" :link="route('cust.all')"/>
                 <x-nav.links name="Add Customer" :link="route('cust.create')"/>
                 <x-nav.links name="Orders" :link="route('ord.workshop')"/>
+                <x-nav.links name="Profile" :link="route('tailor.profile')" />
+                
                 <i class="hidden text-2xl fa-sharp fa-solid fa-bars"></i>
             </nav>
         </header>

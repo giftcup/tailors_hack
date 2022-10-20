@@ -31,4 +31,11 @@ class UserController extends Controller
 
         return redirect()->route('hello');
     }
+
+    public function profile()
+    {
+        $tailors = auth()->user()->workshop->users;
+
+        return view('workshops.info', compact('tailors'));
+    }
 }

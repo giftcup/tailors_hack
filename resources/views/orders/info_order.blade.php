@@ -3,9 +3,9 @@
 @section('content')
     <section class="md:flex md:flex-col md:items-center md:bg-dark-green/80">
         <section class="md:w-1/2 md:flex md:flex-col md:border md:border-white/30 md:shadow-lg md:shadow-white/50 md:p-9">
-            <header class="flex py-5 justify-between items-center">
+            <header class="flex flex-wrap py-5 justify-between items-center">
                 <h1 class="text-3xl font-extrabold">{{ $orderInfo->order_num }}</h1>
-                <p class="text-red-900 font-bold bg-stone-50 p-3">Due: {{ $orderInfo->delivery_date->format('j M Y') }}</p>
+                <p class="text-red-900 font-bold bg-stone-50 p-2">Due: {{ $orderInfo->delivery_date->format('j M Y') }}</p>
             </header>
             <section class="text-xl tracking-wide leading-relaxed">
                 <div class="pb-2">
@@ -31,10 +31,10 @@
                     <span class="italic">Extra Notes: <br></span>
                     <span class="px-5">{{ $orderInfo->extra_notes }}</span>
                 </div>
-                <div class="flex justify-between">
+                <div class="flex flex-wrap justify-between items-center">
                     <form action="{{ route('ord.change', ['orderNum' => $orderInfo->order_num]) }}" method="POST">
                         @csrf
-                        <button class="bg-orange-red px-2 rounded" name="completed" value="">
+                        <button class="bg-orange-red px-2 rounded my-2" name="completed" value="">
                             @if ($orderInfo->completed)
                                 Mark as Uncompleted
                             @else
@@ -45,7 +45,7 @@
 
                     <form action="{{ route('ord.delete', ['customerName' =>  $orderInfo->customer->slug, 'orderNum' => $orderInfo->order_num]) }}" method="POST">
                         @csrf
-                        <button class="border-4 px-3 rounded" name="delete" value="">
+                        <button class="border-4 px-3 rounded my-2" name="delete" value="">
                             Delete
                         </button>
                     </form>
