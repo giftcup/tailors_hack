@@ -4,7 +4,7 @@
     <section class="md:flex md:flex-col md:items-center md:bg-dark-green/80">
         <section class="md:w-1/2 md:flex md:flex-col md:border md:border-white/30 md:shadow-lg md:shadow-white/50 md:p-9">
             <span class="flex justify-start md:justify-end">
-                <a href="#" class="bg-orange-red py-1 px-4 rounded font-bold w-fit text-lg">Edit</a>
+                <a href="{{ route('tailor.profile.edit') }}" class="bg-orange-red py-1 px-4 rounded font-bold w-fit text-lg">Edit</a>
             </span>
 
             <section class="text-xl tracking-wide leading-relaxed py-5">
@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="py-4">
-                    <h1 class="font-bold text-lg text-orange-red">Other Tailors</h1>
+                    <h1 class="font-bold text-lg text-orange-red">All Tailors</h1>
                     <div>
                         <table class="border-collapse">
                             <tbody>

@@ -49,6 +49,8 @@ Route::controller(UserController::class)->name('tailor.')
     Route::get('/workshop', 'joinWorkshop')->name('join');
     Route::post('workshop/join', 'storeWorkshop')->name('workshop');
     Route::get('/profile', 'profile')->name('profile');
+    Route::get('/profile/edit', 'editProfileView')->name('profile.edit.view');
+    Route::post('profile/edit', 'editProfile')->name('profile.edit');
 });
 
 /** 
