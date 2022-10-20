@@ -38,4 +38,13 @@ class UserController extends Controller
 
         return view('workshops.info', compact('tailors'));
     }
+
+    public function editProfile(Request $request) {
+        $request->validate([
+            'name' => 'required', 
+            'tel' => 'required',
+        ]);
+
+        
+    }
 }

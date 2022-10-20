@@ -7,7 +7,6 @@
             <nav class="flex space-x-4 font-bold flex-wrap">
                 <x-nav.links name="Home" :link="route('hello')"/>
                 <x-nav.links name="Customers" :link="route('cust.all')"/>
-                <x-nav.links name="Add Customer" :link="route('cust.create')"/>
                 <x-nav.links name="Orders" :link="route('ord.workshop')"/>
                 <x-nav.links name="Profile" :link="route('tailor.profile')" />
                 

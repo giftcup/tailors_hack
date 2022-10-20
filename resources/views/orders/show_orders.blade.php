@@ -12,7 +12,7 @@
         </form>
     </section>
     <section>
-        <span class="flex justify-end p-5">
+        <span class="flex justify-start md:justify-end py-5">
             <a href="{{ route('ord.create', ['customerName' => $customer]) }}" class="bg-orange-red py-1 px-4 rounded font-bold w-fit text-lg">Add Order</a>
         </span>
         <header class="text-xl font-extrabold pt-5 text-center">

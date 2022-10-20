@@ -3,7 +3,7 @@
 @section('content')
     <section class="md:flex md:flex-col md:items-center md:bg-dark-green/80">
         <section class="md:w-1/2 md:flex md:flex-col md:border md:border-white/30 md:shadow-lg md:shadow-white/50 md:p-9">
-            <span class="flex justify-end">
+            <span class="flex justify-start md:justify-end">
                 <a href="#" class="bg-orange-red py-1 px-4 rounded font-bold w-fit text-lg">Edit</a>
             </span>
 
