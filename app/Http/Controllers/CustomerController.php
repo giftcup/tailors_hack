@@ -50,4 +50,26 @@ class CustomerController extends Controller
 
         return view('contacts.info_contact', compact('customer'));
     }
+
+    public function profileView($customerSlug)
+    {   
+        $customer = Customer::where('slug', $customerSlug)->first();
+
+        return view('contacts.profile', compact('customer'));
+    }
+
+    public function profileEdit(Request $request, $customerSlug)
+    {
+        $request->validate([
+            'name' => 'required',
+            'tel' => 'required'
+        ]);
+
+        Customer::where('slug', $customerSlug)->update([
+            'name' => $request['name'],
+            'tel' => $request['tel']
+        ]);
+
+        return redirect()->route('cust.info', ['customerName' => $customerSlug]);
+    }
 }

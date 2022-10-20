@@ -64,6 +64,8 @@ Route::controller(CustomerController::class)->name('cust.')
         Route::post('customers/add', 'store')->name('store');
         Route::get('customers', 'customers')->name('all');
         Route::get('customers/{customerName}', 'customerInfo')->name('info');
+        Route::get('/customers/{customerName}/profile', 'profileView')->name('profile.view');
+        Route::post('customers/{customerName}/profile', 'profileEdit')->name('profile.edit');
     });
 
 Route::controller(OrderController::class)->name('ord.')

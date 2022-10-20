@@ -11,7 +11,7 @@
                 <p class="text-xl">{{ $customer->tel }}</p>
             </div>
         </div>
-        <x-contacts.contact-info-component icon="fa-user" title="profile" detail="Personal details" :link="route('ord.create', [
+        <x-contacts.contact-info-component icon="fa-user" title="profile" detail="Personal details" :link="route('cust.profile.view', [
             'customerName' => $customer->slug,
         ])" />
         <x-contacts.contact-info-component icon="fa-tape" title="measurements" detail="All measurements"
