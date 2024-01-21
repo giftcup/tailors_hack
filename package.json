@@ -11,6 +11,6 @@
   },
   "dependencies": {
     "laravel-vite-plugin": "^0.3.0",
-    "vite": "^2.9.16"
+    "vite": "^2.9.17"
   }
 }
